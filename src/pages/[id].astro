@@ -1,7 +1,7 @@
 ---
 import type { InferGetStaticPropsType } from 'astro';
 import { getCollection, render } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const newsletters = await getCollection('newsletters');
@@ -22,16 +22,10 @@ const { Content } = await render(newsletter);
 >
   <article class="max-w-2xl mx-auto px-6 py-16">
     <header class="mb-10">
-      <a
-        href="/newsletter"
-        class="text-sm text-neutral-400 hover:text-neutral-800 transition"
-      >
-        &larr; Archivo
-      </a>
 
       <h1 class="tape-title text-3xl mt-6 mb-4">{newsletter.data.title}</h1>
 
-      <time class="text-sm text-neutral-400">
+      <time class="block text-sm text-neutral-400">
         {newsletter.data.pubDate.toLocaleDateString('es-MX', {
           year: 'numeric',
           month: 'long',

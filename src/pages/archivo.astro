@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro';
 
 const newsletters = await getCollection('newsletters');
 const sorted = newsletters.sort(
@@ -44,7 +44,7 @@ const byYear = sorted.reduce((acc, nl) => {
                 </time>
                 <h3 class="mt-1">
                   <a
-                    href={`/newsletter/${nl.id}`}
+                    href={`/${nl.id}`}
                     class="tape-title text-lg"
                   >
                     {nl.data.title}
