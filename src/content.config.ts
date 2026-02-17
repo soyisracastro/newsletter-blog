@@ -7,9 +7,7 @@ const newsletters = defineCollection({
     title: z.string(),
     pubDate: z.coerce.date(),
     description: z.string(),
-    subject: z.string(),
     sentToList: z.string(),
-    campaignId: z.string().optional(),
   }),
 });
 
