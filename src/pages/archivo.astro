@@ -44,7 +44,7 @@ const byYear = sorted.reduce((acc, nl) => {
                 </time>
                 <h3 class="mt-1">
                   <a
-                    href={`/${nl.id}`}
+                    href={`/${nl.id.replace(/^\d{4}-\d{2}-\d{2}-/, '')}`}
                     class="tape-title text-lg block truncate"
                   >
                     {nl.data.title}
