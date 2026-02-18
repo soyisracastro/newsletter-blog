@@ -1,7 +1,7 @@
 ---
 title: "Dos veces he pasado por esto, algo he aprendido"
 pubDate: 2026-02-18T13:52:57.980Z
-description: "Voy a ser directo.No tengo certificación en reclutamiento.Ni doy talleres de "cómo obtener una mejor chamba"Mi LinkedIn está tan descuidado que me da pena.Pero..."
+description: "Voy a ser directo. No tengo certificación en reclutamiento. Ni doy talleres de 'cómo obtener una mejor chamba'. Mi LinkedIn está tan descuidado que me da pena. Pero..."
 sentToList: "Principal"
 ---
 
