@@ -107,11 +107,6 @@ const formId = 'entra-sendy-form';
         <p class="text-neutral-500 text-sm leading-relaxed">
           <span class="font-bold">PD:</span> Si crees que ya sabes todo de Excel, IA, o que no necesitas cobrar más, o que el SAT es "fácil", no te suscribas. No tengo nada que enseñarte.
         </p>
-        <p class="mt-4">
-          <a href="/archivo" class="tape-title text-sm hover:bg-[#333] transition-colors">
-            Ver archivo de newsletters →
-          </a>
-        </p>
       </div>
     </footer>
   </main>
@@ -132,14 +127,14 @@ const formId = 'entra-sendy-form';
           </p>
         </div>
         <!-- Simulated Inbox Row -->
-        <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-sm shadow-sm">
+        <div class="p-6 bg-neutral-50 border border-neutral-200 rounded-sm shadow-sm font-sans">
           <div class="flex items-center gap-4">
             <div class="flex-shrink-0 w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center text-neutral-800">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             </div>
             <div class="flex flex-col gap-1 overflow-hidden">
-              <span class="text-[10px] uppercase tracking-wider text-neutral-400 font-bold font-mono">Asunto del correo</span>
-              <p class="font-mono text-neutral-800 text-base font-medium truncate">
+              <span class="text-[10px] uppercase tracking-wider text-neutral-400 font-bold">Asunto del correo</span>
+              <p class="text-neutral-800 text-base font-medium truncate">
                 Confirma que eres tú (y no un bot aburrido)
               </p>
             </div>
@@ -187,7 +182,6 @@ const formId = 'entra-sendy-form';
       const originalBtnContent = submitBtn?.innerHTML;
 
       if (!messageDiv || !submitBtn || !mainContent) return;
-
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
 

@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AudioPlayer from '../components/AudioPlayer.astro';
+import { Inbox } from '@lucide/astro';
+---
+
+<Layout title="Ya estás dentro - TodoConta" description="Acceso al audio prometido: 3 errores que los contadores mueren en la zona de soporte.">
+  <main class="max-w-2xl mx-auto px-6 pb-20 pt-16">
+    <!-- Intro Section -->
+    <section class="text-center space-y-4">
+      <h1 class="tape-title text-3xl md:text-4xl mx-auto">
+        Listo. Ya estás dentro.
+      </h1>
+      <p class="text-neutral-500 text-lg mt-4">
+        Aquí está el audio que te prometí:
+      </p>
+    </section>
+
+    <!-- Audio Section -->
+    <section class="mt-12">
+      <AudioPlayer
+        src="https://s3.us-east-1.amazonaws.com/todoconta.com/uploads/3-errores-cobrar-poco.mp3"
+        title="3 Errores de Contadores.mp3"
+        duration="10:26"
+        downloadUrl="https://s3.us-east-1.amazonaws.com/todoconta.com/uploads/3-errores-cobrar-poco.mp3"
+      />
+    </section>
+
+    <!-- Content Breakdown -->
+    <section class="mt-16 space-y-4">
+      <h2 class="text-xl font-bold">De qué va:</h2>
+      <ol class="space-y-3">
+        {[
+          "El error de facturación que te quita el 20% de tu margen sin que te des cuenta.",
+          "Por qué la mayoría de los contadores mueren en la \"zona de soporte\" y nunca llegan a ser socios estratégicos.",
+          "La trampa del cumplimiento fiscal: cómo dejar de vender \"trámites\" y empezar a vender \"soluciones\"."
+        ].map((item, i) => (
+          <li class="flex gap-3">
+            <span class="font-bold">{i + 1}.</span>
+            <p class="text-lg text-neutral-800 leading-relaxed">{item}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Quote Box -->
+    <section class="mt-16 bg-neutral-100 rounded-sm p-10 md:p-12 text-center">
+      <p class="text-neutral-800 text-lg font-bold italic leading-relaxed">
+        "Nada de teoría motivacional ni consejos genéricos. Solo lo que he visto que funciona (y lo que no) después de gestionar cientos de cuentas."
+      </p>
+    </section>
+
+    <!-- What's Next Section -->
+    <section class="mt-16 space-y-6">
+      <h3 class="text-xl font-bold">¿Qué viene ahora?</h3>
+      <p class="text-lg text-neutral-800 leading-relaxed">
+        A partir de mañana, recibirás un correo semanal (normalmente los sábados) con estrategias accionables sobre el SAT, dominios avanzados de Excel y cómo vender tus servicios contables a precios premium.
+      </p>
+
+      <!-- Simulated Inbox Row -->
+      <div class="mt-2 w-full border border-neutral-200 rounded-lg bg-neutral-50 shadow-sm font-sans p-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-neutral-200">
+          <Inbox class="w-4 h-4 text-neutral-400" />
+          <span class="text-[11px] font-black text-neutral-500 uppercase tracking-widest leading-none">Tu bandeja de entrada</span>
+        </div>
+        <div class="flex items-center gap-3 pt-4">
+          <svg width="10" height="10" viewBox="0 0 10 10" class="shrink-0" aria-hidden="true">
+            <circle cx="5" cy="5" r="4" fill="#3b82f6" />
+          </svg>
+          <span class="font-bold text-sm text-neutral-800">Israel Castro</span>
+          <span class="text-sm text-neutral-500 font-medium">Aquí está el audio (y una confesión)</span>
+          <span class="text-sm text-neutral-400 font-medium whitespace-nowrap ml-auto">Hace 1 min</span>
+        </div>
+      </div>
+
+      <div class="space-y-3 pt-8">
+        <p class="text-lg italic text-neutral-500">Nos leemos mañana.</p>
+        <p class="text-xl">Isca</p>
+      </div>
+    </section>
+    <!-- Footer / PD Section -->
+    <footer class="mt-24 pt-12 border-t border-neutral-200">
+      <div class="flex flex-col gap-4 text-center sm:text-left">
+        <p class="text-neutral-500 text-sm leading-relaxed">
+          <span class="font-bold">PD:</span> Si quieres ver de qué va esto antes de que llegue el próximo correo, aquí tienes los emails anteriores.
+        </p>
+        <p class="mt-4">
+          <a href="/archivo" class="tape-title text-sm hover:bg-[#333] transition-colors">
+            Ver archivo de newsletters →
+          </a>
+        </p>
+      </div>
+    </footer>
+  </main>
+</Layout>

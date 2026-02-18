@@ -1,0 +1,105 @@
+---
+interface Props {
+  src: string;
+  title: string;
+  duration: string;
+  downloadUrl: string;
+}
+
+const { src, title, duration, downloadUrl } = Astro.props;
+---
+
+<div class="bg-[#111] text-white rounded-sm p-6 md:p-8 shadow-lg">
+  <div class="flex items-center gap-4 mb-4">
+    <button
+      id="play-btn"
+      class="flex-shrink-0 w-12 h-12 rounded-full bg-white text-[#111] flex items-center justify-center cursor-pointer hover:bg-neutral-200 transition"
+      aria-label="Reproducir"
+    >
+      <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#111" stroke="none">
+        <polygon points="6,3 20,12 6,21" />
+      </svg>
+      <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#111" stroke="none" class="hidden">
+        <rect x="6" y="4" width="4" height="16" />
+        <rect x="14" y="4" width="4" height="16" />
+      </svg>
+    </button>
+    <div class="flex flex-col gap-1 min-w-0">
+      <p class="font-mono text-sm font-bold truncate">{title}</p>
+      <p class="text-xs text-neutral-400" id="time-display">0:00 / {duration}</p>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <div class="relative flex-1 h-2 bg-white/20 rounded-full cursor-pointer" id="progress-bar">
+      <div class="absolute top-0 left-0 h-full bg-white rounded-full transition-all" id="progress-fill" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <div class="mt-4 flex justify-end">
+    <a
+      href={downloadUrl}
+      download
+      class="text-xs text-neutral-400 hover:text-white transition flex items-center gap-1"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Descargar
+    </a>
+  </div>
+</div>
+
+<audio id="audio-element" src={src} preload="metadata"></audio>
+
+<script>
+  const setup = () => {
+    const audio = document.getElementById('audio-element') as HTMLAudioElement;
+    const playBtn = document.getElementById('play-btn');
+    const iconPlay = document.getElementById('icon-play');
+    const iconPause = document.getElementById('icon-pause');
+    const progressBar = document.getElementById('progress-bar');
+    const progressFill = document.getElementById('progress-fill');
+    const timeDisplay = document.getElementById('time-display');
+
+    if (!audio || !playBtn || !iconPlay || !iconPause || !progressBar || !progressFill || !timeDisplay) return;
+
+    const formatTime = (s: number) => {
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return `${m}:${sec.toString().padStart(2, '0')}`;
+    };
+
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        iconPlay.classList.add('hidden');
+        iconPause.classList.remove('hidden');
+      } else {
+        audio.pause();
+        iconPlay.classList.remove('hidden');
+        iconPause.classList.add('hidden');
+      }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        const pct = (audio.currentTime / audio.duration) * 100;
+        progressFill.style.width = `${pct}%`;
+        timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      iconPlay.classList.remove('hidden');
+      iconPause.classList.add('hidden');
+    });
+
+    progressBar.addEventListener('click', (e) => {
+      const rect = progressBar.getBoundingClientRect();
+      const pct = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = pct * audio.duration;
+    });
+  };
+
+  setup();
+  document.addEventListener('astro:page-load', setup);
+</script>
