@@ -51,6 +51,6 @@ Preparé un audio de 10 minutos sobre los 3 errores que mantienen
 
 a la mayoría de contadores cobrando poco (yo cometí los 3).
 
-Si te interesa, lo puedes escuchar aquí: [todoconta.com/entra](https://todoconta.com/entra)
+Si te interesa, lo puedes escuchar aquí: [columna13.com/entra](https://columna13.com/entra)
 
 Son 10 minutos que pueden cambiar cómo cobras tus servicios.

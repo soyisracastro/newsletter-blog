@@ -63,7 +63,7 @@ El audio dura poco más de 10 minutos.
 
 Pero solo lo pueden escuchar si te registras aquí:
 
-👉 [QUIERO EL AUDIO](http://todoconta.com/entra)
+👉 [QUIERO EL AUDIO](http://columna13.com/entra)
 
 Si te interesa, regístrate. Si no, también estamos bien.
 
