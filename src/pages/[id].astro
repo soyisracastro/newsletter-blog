@@ -13,12 +13,14 @@ export async function getStaticPaths() {
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { newsletter } = Astro.props;
+const slug = newsletter.id.replace(/^\d{4}-\d{2}-\d{2}-/, '');
 const { Content } = await render(newsletter);
 ---
 
 <Layout
   title={`${newsletter.data.title} - Columna 13`}
   description={newsletter.data.description}
+  image={`/og/${slug}.png`}
 >
   <article class="max-w-2xl mx-auto px-6 py-16">
     <header class="mb-10">
