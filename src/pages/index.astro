@@ -6,6 +6,20 @@ import { PUBLIC_SENDY_LIST_ID, PUBLIC_SENDY_ACTION_URL, PUBLIC_SENDY_API_KEY } f
 const listId = PUBLIC_SENDY_LIST_ID;
 const actionUrl = PUBLIC_SENDY_ACTION_URL;
 const formId = 'entra-sendy-form';
+
+// Obtener número de suscriptores activos
+let subscriberCount = 0;
+try {
+  const sendyBase = new URL(actionUrl).origin;
+  const res = await fetch(`${sendyBase}/api/subscribers/active-subscriber-count.php`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ api_key: PUBLIC_SENDY_API_KEY, list_id: listId }),
+  });
+  const text = await res.text();
+  const parsed = parseInt(text, 10);
+  if (!isNaN(parsed)) subscriberCount = parsed;
+} catch {}
 ---
 
 <Layout title="Columna 13 — Lo que no viene en el plan de estudios" description="En la universidad te enseñaron 12 columnas. La que falta es la que te haría ganar más dinero. Un boletín diario con ideas para cobrar más y trabajar mejor.">
@@ -77,8 +91,8 @@ const formId = 'entra-sendy-form';
     </div>
 
     <!-- Filtro -->
-    <div class="py-8 text-neutral-500">
-      <p class="font-semibold text-neutral-800 mb-4">Esto NO es para ti si:</p>
+    <div class="py-8 text-neutral-800">
+      <p class="font-semibold mb-4">Esto NO es para ti si:</p>
       <ul class="list-none flex flex-col gap-2 pl-0 text-base leading-relaxed">
         <li>— Crees que ya lo sabes todo.</li>
         <li>— Buscas fórmulas mágicas para hacerte rico mañana.</li>
@@ -89,6 +103,9 @@ const formId = 'entra-sendy-form';
 
     <!-- Subscription Form -->
     <form id={formId} action={actionUrl} method="POST" accept-charset="utf-8" class="flex flex-col gap-6 py-12">
+      {subscriberCount > 0 && (
+        <p class="text-neutral-500 text-base">{subscriberCount.toLocaleString('es-MX')} contadores ya reciben esto cada mañana.</p>
+      )}
       <p class="text-neutral-800 text-lg font-semibold">Deja tu correo y te mando el audio ahora mismo.</p>
       <div id="form-fields" class="space-y-6">
         <label class="flex flex-col w-full">
@@ -130,12 +147,12 @@ const formId = 'entra-sendy-form';
     </form>
 
     <!-- Footer / Desapego -->
-    <footer class="mt-24 pt-12 border-t border-neutral-200">
+    <footer class="mt-16 pt-12 border-t border-neutral-200">
       <div class="flex flex-col gap-4 text-center sm:text-left">
-        <p class="text-neutral-500 text-sm leading-relaxed">
-          No te voy a llenar el correo de basura. Te escribo a diario con ideas para ganar más y trabajar mejor. Si un día no te gusta, te das de baja con un clic y aquí no pasó nada.
+        <p class="text-neutral-800 text-sm leading-relaxed">
+          No te voy a llenar el correo de basura. Te escribo a diario con ideas para ganar más y trabajar mejor. Si un día no te gusta, te das de baja con un clic, sin dramas y aquí no pasó nada.No te voy a llenar el correo de basura. Te escribo a diario con ideas para ganar más y trabajar mejor. Si un día no te gusta, te das de baja con un clic. Sin dramas, aquí no pasó nada.
         </p>
-        <p class="text-neutral-500 text-sm leading-relaxed">
+        <p class="text-neutral-800 text-sm leading-relaxed">
           — Isca
         </p>
       </div>
