@@ -12,6 +12,7 @@ export default defineConfig({
       PUBLIC_SENDY_LIST_ID: envField.string({ context: 'client', access: 'public' }),
       PUBLIC_SENDY_ACTION_URL: envField.string({ context: 'client', access: 'public' }),
       PUBLIC_SENDY_API_KEY: envField.string({ context: 'client', access: 'public' }),
+      PUBLIC_SENDY_EBOOK_LIST_ID: envField.string({ context: 'client', access: 'public' }),
     },
   },
 });

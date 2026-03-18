@@ -1,0 +1,57 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { getCollection, render } from 'astro:content';
+import EbookLayout from '../../../layouts/EbookLayout.astro';
+
+const BOOK_SLUG = 'ia-para-contadores';
+const BOOK_TITLE = 'IA para Contadores';
+
+export async function getStaticPaths() {
+  const SLUG = 'ia-para-contadores';
+  const all = await getCollection('ebooks');
+  const chapters = all
+    .filter((e) => e.id.startsWith(`${SLUG}/`))
+    .sort((a, b) => a.data.chapter - b.data.chapter);
+
+  return chapters.map((entry, i) => {
+    const slug = entry.id.split('/')[1];
+    return {
+      params: { chapter: slug },
+      props: {
+        entry,
+        prevSlug: i > 0 ? chapters[i - 1].id.split('/')[1] : undefined,
+        nextSlug: i < chapters.length - 1 ? chapters[i + 1].id.split('/')[1] : undefined,
+      },
+    };
+  });
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { entry, prevSlug, nextSlug } = Astro.props;
+const { Content } = await render(entry);
+const chapterSlug = entry.id.split('/')[1];
+---
+
+<EbookLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  noindex={true}
+  bookSlug={BOOK_SLUG}
+  bookTitle={BOOK_TITLE}
+  prevSlug={prevSlug}
+  nextSlug={nextSlug}
+>
+  <!-- Placeholder de ilustración por capítulo -->
+  <div
+    class="w-full aspect-video bg-neutral-100 rounded mb-10 flex items-center justify-center"
+    data-illustration-slot={chapterSlug}
+  >
+    <span class="text-neutral-300 text-sm font-mono">
+      ilustración — cap. {entry.data.chapter}
+    </span>
+  </div>
+
+  <div class="prose prose-lg prose-neutral max-w-none">
+    <Content />
+  </div>
+</EbookLayout>

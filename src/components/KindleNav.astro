@@ -1,0 +1,55 @@
+---
+import { ChevronLeft, ChevronRight, BookOpen } from '@lucide/astro';
+
+interface Props {
+  prevSlug?: string;
+  nextSlug?: string;
+  bookSlug: string;
+}
+
+const { prevSlug, nextSlug, bookSlug } = Astro.props;
+---
+
+<nav class="fixed bottom-0 left-0 right-0 z-10 bg-white border-t border-neutral-200
+            md:relative md:border-t-0 md:border-b md:border-neutral-200">
+  <div class="max-w-2xl mx-auto flex items-center justify-between px-8 py-4">
+    {prevSlug ? (
+      <a
+        href={`/ebook/${bookSlug}/${prevSlug}`}
+        class="text-neutral-600 hover:text-neutral-900 transition-colors"
+        aria-label="Capítulo anterior"
+      >
+        <ChevronLeft size={24} />
+      </a>
+    ) : (
+      <span class="text-neutral-200" aria-hidden="true">
+        <ChevronLeft size={24} />
+      </span>
+    )}
+
+    <a
+      href={`/ebook/${bookSlug}`}
+      class="text-neutral-600 hover:text-neutral-900 transition-colors"
+      aria-label="Tabla de contenidos"
+    >
+      <BookOpen size={22} />
+    </a>
+
+    {nextSlug ? (
+      <a
+        href={`/ebook/${bookSlug}/${nextSlug}`}
+        class="text-neutral-600 hover:text-neutral-900 transition-colors"
+        aria-label="Capítulo siguiente"
+      >
+        <ChevronRight size={24} />
+      </a>
+    ) : (
+      <span class="text-neutral-200" aria-hidden="true">
+        <ChevronRight size={24} />
+      </span>
+    )}
+  </div>
+</nav>
+
+<!-- Spacer para que el nav fixed no tape el contenido en mobile -->
+<div class="h-20 md:hidden" aria-hidden="true" />

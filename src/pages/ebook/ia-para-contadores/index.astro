@@ -1,0 +1,76 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const BOOK_SLUG = 'ia-para-contadores';
+
+const all = await getCollection('ebooks');
+const chapters = all
+  .filter((e) => e.id.startsWith(`${BOOK_SLUG}/`))
+  .sort((a, b) => a.data.chapter - b.data.chapter);
+
+const mainChapters = chapters.filter((c) => c.data.chapter <= 17);
+const appendices = chapters.filter((c) => c.data.chapter >= 18);
+---
+
+<Layout
+  title="IA para Contadores — Índice"
+  description="Tabla de contenidos del ebook IA para Contadores."
+  noindex={true}
+>
+  <main class="max-w-2xl mx-auto px-6 pb-24 pt-16">
+
+    <div class="flex flex-col gap-2 mb-12">
+      <p class="text-neutral-500 text-sm font-mono uppercase tracking-widest">Ebook</p>
+      <h1 class="tape-title text-3xl md:text-4xl">IA para Contadores</h1>
+      <p class="text-neutral-500 text-base italic mt-1">Isca Castro · TodoConta</p>
+    </div>
+
+    <!-- Tabla de contenidos -->
+    <div class="flex flex-col gap-1">
+      {mainChapters.map((chapter) => {
+        const slug = chapter.id.split('/')[1];
+        return (
+          <a
+            href={`/ebook/${BOOK_SLUG}/${slug}`}
+            class="flex items-start gap-3 py-3 border-b border-neutral-100 group"
+          >
+            <span class="text-neutral-300 font-mono text-xs w-8 shrink-0 mt-0.5 tabular-nums">
+              {chapter.data.chapter === 0 ? 'Intro' : String(chapter.data.chapter).padStart(2, '0')}
+            </span>
+            <span class="text-neutral-700 group-hover:text-neutral-900 transition text-sm leading-snug flex-1">
+              {chapter.data.title
+                .replace(/^Capítulo \d+: /, '')
+                .replace(/^Introducción: /, '')}
+            </span>
+          </a>
+        );
+      })}
+
+      <!-- Apéndices -->
+      <div class="mt-6">
+        <p class="text-xs uppercase tracking-widest text-neutral-400 font-mono mb-2 px-0">Apéndices</p>
+        {appendices.map((ap) => {
+          const slug = ap.id.split('/')[1];
+          const letter = ['A', 'B', 'C'][ap.data.chapter - 18];
+          return (
+            <a
+              href={`/ebook/${BOOK_SLUG}/${slug}`}
+              class="flex items-start gap-3 py-3 border-b border-neutral-100 group"
+            >
+              <span class="text-neutral-300 font-mono text-xs w-8 shrink-0 mt-0.5">{letter}</span>
+              <span class="text-neutral-700 group-hover:text-neutral-900 transition text-sm flex-1">
+                {ap.data.title.replace(/^Apéndice [ABC]: /, '')}
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+
+    <p class="mt-12 text-xs text-neutral-400 font-mono">
+      ¿Problemas con tu acceso? <a href="mailto:hola@columna13.club" class="underline hover:text-neutral-700 transition">hola@columna13.club</a>
+    </p>
+
+  </main>
+</Layout>

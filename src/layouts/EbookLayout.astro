@@ -1,0 +1,54 @@
+---
+import Layout from './Layout.astro';
+import KindleNav from '../components/KindleNav.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+  bookSlug: string;
+  bookTitle: string;
+  prevSlug?: string;
+  nextSlug?: string;
+}
+
+const {
+  title,
+  description,
+  noindex = false,
+  bookSlug,
+  bookTitle,
+  prevSlug,
+  nextSlug,
+} = Astro.props;
+---
+
+<Layout
+  title={`${title} — ${bookTitle}`}
+  description={description}
+  image={`/og/ebook/${bookSlug}.png`}
+  noindex={noindex}
+>
+  <div class="min-h-screen flex flex-col pb-20 md:pb-0">
+    <!-- Top bar: breadcrumb al libro -->
+    <header class="border-b border-neutral-100">
+      <div class="max-w-2xl mx-auto px-6 py-3 flex items-center justify-between">
+        <a
+          href={`/ebook/${bookSlug}`}
+          class="tape-title text-xs"
+        >
+          {bookTitle}
+        </a>
+      </div>
+    </header>
+
+    <!-- Contenido del capítulo -->
+    <main class="max-w-2xl mx-auto w-full px-6 py-10 flex-1">
+      <slot />
+    </main>
+
+    <!-- Navegación Kindle -->
+    <KindleNav prevSlug={prevSlug} nextSlug={nextSlug} bookSlug={bookSlug} />
+  </div>
+</Layout>
+

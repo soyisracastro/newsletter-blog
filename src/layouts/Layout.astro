@@ -3,12 +3,14 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description = 'Archivo de newsletters de Columna 13',
   image = '/og/home.png',
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -41,6 +43,8 @@ import '../styles/global.css';
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL.href} />
+
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
