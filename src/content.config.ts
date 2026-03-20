@@ -20,6 +20,7 @@ const ebooks = defineCollection({
     chapter: z.number(),
     bookSlug: z.string(),
     isFree: z.boolean(),
+    image: z.string().optional(),
   }),
 });
 

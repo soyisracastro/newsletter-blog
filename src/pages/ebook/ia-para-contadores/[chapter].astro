@@ -41,15 +41,22 @@ const chapterSlug = entry.id.split('/')[1];
   prevSlug={prevSlug}
   nextSlug={nextSlug}
 >
-  <!-- Placeholder de ilustración por capítulo -->
-  <div
-    class="w-full aspect-video bg-neutral-100 rounded mb-10 flex items-center justify-center"
-    data-illustration-slot={chapterSlug}
-  >
-    <span class="text-neutral-300 text-sm font-mono">
-      ilustración — cap. {entry.data.chapter}
-    </span>
-  </div>
+  {entry.data.image ? (
+    <img
+      src={entry.data.image}
+      alt={entry.data.title}
+      class="w-full rounded mb-10"
+    />
+  ) : (
+    <div
+      class="w-full aspect-video bg-neutral-100 rounded mb-10 flex items-center justify-center"
+      data-illustration-slot={chapterSlug}
+    >
+      <span class="text-neutral-300 text-sm font-mono">
+        ilustración — cap. {entry.data.chapter}
+      </span>
+    </div>
+  )}
 
   <div class="prose prose-lg prose-neutral max-w-none">
     <Content />
