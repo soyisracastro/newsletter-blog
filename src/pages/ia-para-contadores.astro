@@ -1,0 +1,401 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {
+  PUBLIC_SENDY_ACTION_URL,
+  PUBLIC_SENDY_API_KEY,
+  PUBLIC_SENDY_EBOOK_LIST_ID,
+} from "astro:env/client";
+
+const NAS_IO_URL = "https://nas.io/columna13/products/ia-para-contadores";
+const PRICE = "$297 MXN";
+const PRICE_BUNDLE = "$597 MXN";
+
+const actionUrl = PUBLIC_SENDY_ACTION_URL;
+const ebookListId = PUBLIC_SENDY_EBOOK_LIST_ID;
+const formId = "ebook-lead-form";
+---
+
+<Layout
+  title="IA para Contadores — No te reemplaza la IA, te reemplaza el contador que la usa bien"
+  description="17 capítulos en términos de contador, no de ingeniero. Entiende cómo funciona la IA por dentro, qué riesgos tiene y cómo usarla con criterio en tu despacho. Descarga los primeros 2 capítulos gratis."
+  image="/og/ebook/ia-para-contadores.png"
+>
+  <main class="max-w-2xl mx-auto px-6 pb-24 pt-16">
+    <!-- Titular -->
+    <div class="flex flex-col gap-4 py-2 md:py-4">
+      <h1
+        class="tape-title text-3xl md:text-4xl mx-auto text-center leading-tight"
+      >
+        La IA ya está en los despachos
+      </h1>
+    </div>
+    <p class="text-neutral-500 text-xl italic leading-relaxed text-center mt-2">
+      El problema no es que no la uses.<br />
+      El problema es que no sabes qué tan mal la estás usando.
+    </p>
+
+    <!-- Gancho -->
+    <div
+      class="mt-12 flex flex-col gap-5 text-lg leading-relaxed text-neutral-800"
+    >
+      <p>
+        Hay contadores que le preguntan a ChatGPT cosas que ya saben. Y hay
+        contadores que le piden resultados que antes tardaban tres horas.
+      </p>
+      <p>
+        Los dos usan la misma herramienta. La diferencia no es el acceso. Es
+        entender cómo funciona por dentro.
+      </p>
+    </div>
+
+    <!-- La Historia -->
+    <div
+      class="mt-12 flex flex-col gap-5 text-lg leading-relaxed text-neutral-800"
+    >
+      <p>
+        La mayoría de los tutoriales de IA te enseñan a darle clic a botones.
+      </p>
+      <p class="text-neutral-500 italic">
+        "Escribe este prompt."<br />
+        "Copia esta fórmula."<br />
+        "Usa esta extensión."
+      </p>
+      <p>Y sí, funciona. Un rato.</p>
+      <p>
+        Hasta que la herramienta cambia, el prompt deja de jalar, o el cliente
+        te hace una pregunta que la IA respondió mal y tú haces <i>copy-paste</i
+        > sin revisar.
+      </p>
+      <p>Ahí es donde se pone fea la cosa.</p>
+      <p>
+        Porque el problema no es la herramienta. El problema es que nadie te
+        explicó cómo funciona.
+      </p>
+      <p>
+        Y un contador que no entiende cómo funciona su herramienta
+        <strong
+          >está poniendo en juego su reputación con los ojos cerrados</strong
+        >.
+      </p>
+    </div>
+
+    <!-- Creencia que se destruye -->
+    <div
+      class="mt-12 flex flex-col gap-5 text-lg leading-relaxed text-neutral-800"
+    >
+      <p>Todo el mundo dice: "La IA te va a reemplazar."</p>
+      <p>Mentira. O al menos, no toda.</p>
+      <p>
+        Lo que sí va a pasar (de hecho, mientras lees esto, ya está pasando) es
+        esto: el contador que entiende la IA va a hacer en dos horas lo que tú
+        haces en ocho. Va a cobrar lo mismo. O más. Y va a tener clientes que tú
+        no puedes atender porque sigues atascado en lo operativo.
+      </p>
+      <p>
+        <strong
+          >No te reemplaza la IA. Te reemplaza el contador que la usa bien.</strong
+        >
+      </p>
+      <p>Esa es LA diferencia.</p>
+    </div>
+
+    <!-- La Transición -->
+    <div
+      class="mt-12 flex flex-col gap-5 text-lg leading-relaxed text-neutral-800"
+    >
+      <p>Por eso escribí este libro.</p>
+      <p>
+        No para enseñarte a usar ChatGPT. Para eso hay miles de videos gratis en
+        YouTube.
+      </p>
+      <p>
+        Lo escribí para que entiendas qué hay detrás: cómo funciona un modelo de
+        lenguaje, por qué alucina, cómo darle instrucciones que den resultados
+        reales, qué riesgos legales y profesionales implica usarla sin criterio,
+        y qué partes de tu trabajo sí puedes delegar —y cuáles siguen siendo
+        tuyas como profesionista.
+      </p>
+      <div
+        class="flex flex-col gap-2 text-base leading-relaxed text-neutral-600 border-l-2 border-neutral-200 pl-5"
+      >
+        <p class="font-semibold text-neutral-800">17 capítulos. 3 apéndices.</p>
+        <p>Todo en términos de contador, no de ingeniero de software.</p>
+      </div>
+    </div>
+
+    <!-- Beneficios -->
+    <div
+      class="mt-12 flex flex-col gap-5 text-lg leading-relaxed text-neutral-800"
+    >
+      <p class="font-semibold">Después de leer esto:</p>
+      <p>
+        Vas a saber exactamente qué preguntarle a la IA y cómo pedírselo para
+        que no te dé respuestas genéricas que suenan bien pero no sirven de
+        nada.
+      </p>
+      <p>
+        Vas a identificar en qué momentos la IA puede meterte en un problema
+        fiscal o legal —antes de que te meta en uno.
+      </p>
+      <p>
+        Vas a poder evaluar cualquier herramienta nueva que salga mañana. No por
+        lo que promete en su landing page, sino porque ya entiendes cómo
+        funciona por dentro.
+      </p>
+      <p>Y vas a dejar de usar la IA como un buscador de Google caro.</p>
+    </div>
+
+    <!-- Los dos bandos -->
+    <div
+      class="mt-12 flex flex-col gap-5 text-lg leading-relaxed text-neutral-800"
+    >
+      <p>
+        Hay contadores que van a seguir usando la IA como si fuera un asistente
+        que redacta correos. Útil. Pero limitado.
+      </p>
+      <p>
+        Y hay contadores que van a entender cómo funciona, van a integrarla en
+        su despacho con criterio, y dentro de un año van a estar atendiendo el
+        doble de clientes con la misma energía —o trabajando menos con los
+        mismos ingresos.
+      </p>
+      <p>Los dos tienen acceso a las mismas herramientas hoy.</p>
+      <p><strong>Lo que cambia es lo que saben hacer con ellas.</strong></p>
+    </div>
+
+    <!-- Lead Magnet -->
+    <div id="form-section" class="mt-14 pt-10 border-t border-neutral-200">
+      <h2 class="text-2xl font-serif font-semibold mb-2">
+        Si todavía no estás seguro, no hay problema.
+      </h2>
+      <p class="text-neutral-500 text-base mb-8">
+        Deja tu email y te mando los primeros 2 capítulos de inmediato. Si
+        después de leerlos sientes que no es para ti, no lo compres
+      </p>
+
+      <form
+        id={formId}
+        action={actionUrl}
+        method="POST"
+        accept-charset="utf-8"
+        class="flex flex-col gap-6"
+      >
+        <div id="form-fields-ebook" class="space-y-6">
+          <label class="flex flex-col w-full">
+            <p
+              class="text-neutral-800 text-base font-semibold leading-normal pb-3 px-1"
+            >
+              Tu mejor email
+            </p>
+            <input
+              name="email"
+              id="email-ebook"
+              class="form-input flex w-full rounded-sm text-neutral-800 focus:outline-0 focus:ring-2 focus:ring-neutral-400 border border-neutral-200 bg-white h-16 px-5 text-lg font-normal placeholder:text-neutral-400"
+              placeholder="ejemplo@correo.com"
+              required
+              type="email"
+            />
+          </label>
+
+          <div class="hidden">
+            <input type="hidden" name="list" value={ebookListId} />
+            <input type="hidden" name="subscribesubmit" value="true" />
+            <input type="hidden" name="boolean" value="true" />
+            <div style="display:none;">
+              <label for="hp-ebook">HP</label><br />
+              <input type="text" name="hp" id="hp-ebook" />
+            </div>
+          </div>
+
+          <label class="flex items-center gap-3 px-1 cursor-pointer">
+            <input
+              class="form-checkbox size-5 rounded-sm border-neutral-200 text-neutral-800 focus:ring-neutral-400"
+              required
+              type="checkbox"
+            />
+            <span class="text-sm text-neutral-500">
+              Acepto recibir emails y la <a
+                href="/privacidad"
+                class="underline hover:text-neutral-800 transition"
+                >política de privacidad</a
+              >.
+            </span>
+          </label>
+        </div>
+
+        <button
+          id="submit-btn-ebook"
+          class="tape-title w-full flex cursor-pointer items-center justify-center overflow-hidden rounded-sm h-16 px-8 text-xl leading-normal shadow-lg transition-transform active:scale-[0.98]"
+          type="submit"
+        >
+          QUIERO LOS 2 CAPÍTULOS GRATIS
+        </button>
+
+        <div
+          id="message-ebook"
+          class="hidden text-sm font-medium p-6 rounded-sm text-center"
+        >
+        </div>
+      </form>
+    </div>
+
+    <!-- Precio — La No-Oferta -->
+    <div class="mt-20 pt-10 border-t border-neutral-200 flex flex-col gap-6">
+      <div>
+        <h2 class="text-2xl font-serif font-semibold">
+          ¿Ya leíste los capítulos y quieres el libro completo?
+        </h2>
+      </div>
+      <div class="flex flex-col gap-3 text-lg leading-relaxed text-neutral-800">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href={NAS_IO_URL}
+            target="_blank"
+            rel="noopener"
+            class="flex items-center justify-center px-8 h-14 text-lg rounded-sm bg-neutral-900 text-white font-semibold shadow-lg transition-transform active:scale-[0.98] text-center"
+          >
+            Ebook PDF — {PRICE}
+          </a>
+          <a
+            href={NAS_IO_URL}
+            target="_blank"
+            rel="noopener"
+            class="flex items-center justify-center px-8 h-14 text-lg border border-neutral-200 rounded-sm text-neutral-700 hover:border-neutral-400 transition text-center"
+          >
+            Bundle + Prompts — {PRICE_BUNDLE}
+          </a>
+        </div>
+        <p class="text-neutral-600 text-base mt-4">
+          ¿Es caro para un ebook? Depende. Si lo lees y lo aplicas, no. Si lo
+          compras, lo guardas en descargas y nunca lo abres, sí.
+        </p>
+        <p class="text-neutral-600 text-base">
+          Incluye PDF y versión acceso web completo con los 17 capítulos y 3
+          apéndices.
+        </p>
+        <p class="text-neutral-500 text-sm">
+          Garantía de 7 días. Si no te sirvió, te devuelvo el dinero. Sin
+          preguntas, sin drama.
+        </p>
+      </div>
+    </div>
+
+    <!-- Cierre — Desapego -->
+    <div
+      class="mt-12 flex flex-col gap-5 text-lg leading-relaxed text-neutral-800"
+    >
+      <p>Esto es lo que hay.</p>
+      <p>
+        Si te sirve, genial. Si ya sabes todo lo que está aquí, tampoco lo
+        compres.
+      </p>
+      <p>
+        Pero si llevas un rato usando la IA a medias, copiando prompts genéricos
+        que ves en redes sociales y esperando que funcionen... este libro es
+        probablemente lo más útil que vas a leer este año sobre el tema.
+      </p>
+      <p>Tú decides.</p>
+    </div>
+
+    <!-- Sobre el autor -->
+    <div class="mt-16 pt-10 border-t border-neutral-200">
+      <h2 class="text-xl font-serif font-semibold mb-3">Sobre el autor</h2>
+      <p class="text-neutral-600 text-base leading-relaxed">
+        Israel Castro es contador público y programador. Cofundador de S &amp; I
+        Castro Consultores. Creador de TodoConta y autor de <a
+          href="/"
+          class="underline hover:text-neutral-900 transition">Columna 13</a
+        >, un newsletter diario para contadores que quieren trabajar mejor. Este
+        libro nació de ese newsletter. La respuesta fue tan grande que decidió
+        expandirlo y publicarlo.
+      </p>
+    </div>
+  </main>
+</Layout>
+
+<script define:vars={{ formId, actionUrl, apiKey: PUBLIC_SENDY_API_KEY }}>
+  const SUCCESS_HTML = `
+    <div class="flex flex-col gap-6 py-4">
+      <h2 class="font-serif text-2xl font-semibold text-neutral-800">Casi listo. Falta un paso.</h2>
+      <p class="text-base text-neutral-700 leading-relaxed">
+        Te mandé un email de confirmación. Ve a tu bandeja (o spam) y busca:
+      </p>
+      <div class="p-5 bg-neutral-50 border border-neutral-200 rounded-sm font-sans">
+        <p class="text-neutral-800 text-base font-medium">Confirma que eres tú (y no un bot aburrido)</p>
+      </div>
+      <p class="text-sm text-neutral-500 leading-relaxed">
+        Una vez confirmado, te mando los dos primeros capítulos directamente a tu correo.
+      </p>
+    </div>
+  `;
+
+  const setupForm = () => {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    const messageDiv = document.getElementById("message-ebook");
+    const submitBtn = document.getElementById("submit-btn-ebook");
+    const formFields = document.getElementById("form-fields-ebook");
+    const originalBtnContent = submitBtn?.innerHTML;
+
+    if (!messageDiv || !submitBtn || !formFields) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      messageDiv.classList.add("hidden");
+
+      const formData = new FormData(form);
+      const data = new URLSearchParams();
+      for (const [key, value] of formData.entries()) {
+        data.append(key, value.toString());
+      }
+      data.append("api_key", apiKey);
+      data.append("boolean", "true");
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "Enviando...";
+
+      try {
+        const response = await fetch(actionUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: data,
+        });
+        const result = await response.text();
+
+        if (result === "1") {
+          formFields.innerHTML = SUCCESS_HTML;
+          submitBtn.classList.add("hidden");
+          window.scrollTo({
+            top: document.getElementById("form-section").offsetTop - 20,
+            behavior: "smooth",
+          });
+        } else if (result === "Already subscribed.") {
+          messageDiv.classList.remove("hidden");
+          messageDiv.className =
+            "text-sm font-medium p-4 rounded-sm text-center bg-neutral-100 text-neutral-800 border border-neutral-200";
+          messageDiv.textContent =
+            "¡Ya estás en la lista! Revisa tu correo para los capítulos.";
+        } else {
+          messageDiv.classList.remove("hidden");
+          messageDiv.className =
+            "text-sm font-medium p-4 rounded-sm text-center bg-red-50 text-red-800 border border-red-200";
+          messageDiv.textContent = `Algo salió mal: ${result}`;
+        }
+      } catch {
+        messageDiv.classList.remove("hidden");
+        messageDiv.className =
+          "text-sm font-medium p-4 rounded-sm text-center bg-red-50 text-red-800 border border-red-200";
+        messageDiv.textContent = "Error de conexión. Inténtalo de nuevo.";
+      } finally {
+        if (!submitBtn.classList.contains("hidden")) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnContent;
+        }
+      }
+    });
+  };
+
+  setupForm();
+  document.addEventListener("astro:page-load", setupForm);
+</script>
