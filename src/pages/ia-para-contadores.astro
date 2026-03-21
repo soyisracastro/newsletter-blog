@@ -22,7 +22,7 @@ const formId = "ebook-lead-form";
 >
   <main class="max-w-2xl mx-auto px-6 pb-24 pt-16">
     <!-- Titular -->
-    <div class="flex flex-col gap-4 py-2 md:py-4">
+    <div class="mt-20 flex flex-col gap-4 py-2 md:py-4">
       <h1
         class="tape-title text-3xl md:text-4xl mx-auto text-center leading-tight"
       >
@@ -36,7 +36,7 @@ const formId = "ebook-lead-form";
 
     <!-- Gancho -->
     <div
-      class="mt-12 flex flex-col gap-5 text-lg leading-relaxed text-neutral-800"
+      class="mt-24 flex flex-col gap-5 text-lg leading-relaxed text-neutral-800"
     >
       <p>
         Hay contadores que le preguntan a ChatGPT cosas que ya saben. Y hay
@@ -53,7 +53,8 @@ const formId = "ebook-lead-form";
       class="mt-12 flex flex-col gap-5 text-lg leading-relaxed text-neutral-800"
     >
       <p>
-        La mayoría de los tutoriales de IA te enseñan a darle clic a botones.
+        La mayoría de los tutoriales de IA que hay disponibles por ahí, te
+        enseñan a darle clic a botones, a usar una herramienta en específico.
       </p>
       <p class="text-neutral-500 italic">
         "Escribe este prompt."<br />
@@ -66,7 +67,7 @@ const formId = "ebook-lead-form";
         te hace una pregunta que la IA respondió mal y tú haces <i>copy-paste</i
         > sin revisar.
       </p>
-      <p>Ahí es donde se pone fea la cosa.</p>
+      <p>Ahí es donde la cosa se pone fea.</p>
       <p>
         Porque el problema no es la herramienta. El problema es que nadie te
         explicó cómo funciona.
@@ -164,13 +165,13 @@ const formId = "ebook-lead-form";
     </div>
 
     <!-- Lead Magnet -->
-    <div id="form-section" class="mt-14 pt-10 border-t border-neutral-200">
+    <div id="form-section" class="mt-20 pt-10 border-t border-neutral-200">
       <h2 class="text-2xl font-serif font-semibold mb-2">
         Si todavía no estás seguro, no hay problema.
       </h2>
-      <p class="text-neutral-500 text-base mb-8">
+      <p class="text-lg leading-relaxed text-neutral-800 mb-8">
         Deja tu email y te mando los primeros 2 capítulos de inmediato. Si
-        después de leerlos sientes que no es para ti, no lo compres
+        después de leerlos sientes que no es para ti, no lo compres.
       </p>
 
       <form
@@ -254,7 +255,7 @@ const formId = "ebook-lead-form";
             rel="noopener"
             class="flex items-center justify-center px-8 h-14 text-lg rounded-sm bg-neutral-900 text-white font-semibold shadow-lg transition-transform active:scale-[0.98] text-center"
           >
-            Ebook PDF — {PRICE}
+            Ebook — {PRICE}
           </a>
           <a
             href={NAS_IO_URL}
@@ -265,17 +266,25 @@ const formId = "ebook-lead-form";
             Bundle + Prompts — {PRICE_BUNDLE}
           </a>
         </div>
-        <p class="text-neutral-600 text-base mt-4">
-          ¿Es caro para un ebook? Depende. Si lo lees y lo aplicas, no. Si lo
-          compras, lo guardas en descargas y nunca lo abres, sí.
-        </p>
-        <p class="text-neutral-600 text-base">
-          Incluye PDF y versión acceso web completo con los 17 capítulos y 3
+        <p class="text-lg leading-relaxed text-neutral-800">
+          Incluye PDF y acceso a la versión web con los 17 capítulos y 3
           apéndices.
         </p>
         <p class="text-neutral-500 text-sm">
           Garantía de 7 días. Si no te sirvió, te devuelvo el dinero. Sin
           preguntas, sin drama.
+        </p>
+        <p class="text-lg leading-relaxed text-neutral-800 mt-4">
+          ¿Es caro para un ebook? Depende.
+        </p>
+        <p class="text-lg leading-relaxed text-neutral-800 mt-4">
+          Si lo lees y lo aplicas, no. Será probablemente la mejor inversión que
+          hagas este año para tu carrera.
+        </p>
+        <p class="text-lg leading-relaxed text-neutral-800 mt-4">
+          Si lo compras, lo guardas en descargas y nunca lo abres, sí. Sólo me
+          habrás dado dinero para que me compre un café. Y no tengo problema con
+          eso, de verdad.
         </p>
       </div>
     </div>
