@@ -7,6 +7,8 @@ import {
 } from "astro:env/client";
 
 const NAS_IO_URL = "https://nas.io/columna13/products/ia-para-contadores";
+const NAS_IO_URL_BUNDLE =
+  "https://nas.io/columna13/products/ia-para-contadores-bundle";
 const PRICE = "$297 MXN";
 const PRICE_BUNDLE = "$597 MXN";
 
@@ -258,7 +260,7 @@ const formId = "ebook-lead-form";
             Ebook — {PRICE}
           </a>
           <a
-            href={NAS_IO_URL}
+            href={NAS_IO_URL_BUNDLE}
             target="_blank"
             rel="noopener"
             class="flex items-center justify-center px-8 h-14 text-lg border border-neutral-200 rounded-sm text-neutral-700 hover:border-neutral-400 transition text-center"
