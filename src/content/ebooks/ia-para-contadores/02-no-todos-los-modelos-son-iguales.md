@@ -4,6 +4,7 @@ pubDate: 2026-03-13
 description: "Parámetros, modelos frontier vs modelos pequeños, benchmarks. Cómo elegir el modelo correcto para cada tarea."
 chapter: 2
 bookSlug: "ia-para-contadores"
+image: "/ebook/ia-para-contadores/cap-02.webp"
 isFree: false
 ---
 
@@ -50,7 +51,7 @@ Un socio con quince años de experiencia en auditoría fiscal no necesariamente 
 
 Además, las empresas que desarrollan estos modelos han descubierto que con técnicas de entrenamiento más sofisticadas, modelos relativamente más pequeños pueden rendir igual o mejor que modelos gigantes en ciertas tareas. Es como el contador joven que se especializó a fondo en un tema y, en ese tema puntual, puede darle batalla al socio más experimentado.
 
-Dicho esto, para las tareas complejas que un contador enfrenta a diario (interpretar legislación fiscal, analizar criterios normativos, redactar fundamentos legales), los modelos con más capacidad siguen teniendo una ventaja clara. La diferencia se nota especialmente cuando la tarea requiere seguir instrucciones largas, mantener coherencia a lo largo de un documento extenso, o manejar múltiples variables al mismo tiempo.
+Dicho esto, para las tareas complejas que un contador enfrenta a diario —interpretar legislación fiscal, analizar criterios normativos, redactar fundamentos legales—, los modelos con más capacidad siguen teniendo una ventaja clara. La diferencia se nota especialmente cuando la tarea requiere seguir instrucciones largas, mantener coherencia a lo largo de un documento extenso, o manejar múltiples variables al mismo tiempo.
 
 ## Modelos frontier vs modelos pequeños
 
@@ -86,15 +87,17 @@ No necesitas convertirte en experto en benchmarks. Pero sí te conviene saber qu
 
 A grandes rasgos, las familias de modelos más relevantes hoy son:
 
-**GPT (OpenAI):** La familia más conocida. Sus modelos más recientes son de los más capaces del mercado, especialmente en generación de texto y seguimiento de instrucciones. La serie "o" introduce capacidades de razonamiento extendido. Es probablemente el que más has escuchado mencionar.
+**GPT (OpenAI):** La familia más conocida. Su modelo actual, **GPT-5.4**, ha integrado las capacidades de razonamiento (antes llamadas serie "o") de forma nativa. Es excelente en lógica pura, programación y seguimiento de instrucciones complejas. Sus versiones más potentes ahora manejan contextos de hasta un millón de tokens, permitiéndole "recordar" libros enteros en una sola charla.
 
-**Claude (Anthropic):** Destaca por su capacidad de manejar documentos muy largos y seguir instrucciones detalladas con precisión. Muchos profesionistas que trabajan con textos extensos (contratos, legislación, dictámenes) encuentran que Claude maneja mejor ese tipo de tareas. También es reconocido por generar respuestas más cuidadosas y matizadas.
+**Claude (Anthropic):** Es el favorito de muchos profesionistas por su tono natural y su precisión técnica. Con la llegada de **Claude 4.6**, su capacidad para manejar legislación o contratos extensos se ha potenciado con el "Adaptive Thinking", una función donde el modelo se detiene a "pensar" y planificar antes de escribir, reduciendo drásticamente los errores en temas delicados.
 
-**Gemini (Google):** Su integración con el ecosistema de Google (Drive, Gmail, Docs) es su diferenciador principal. Si tu despacho vive en Google Workspace, Gemini puede acceder directamente a tu información. Sus modelos más grandes compiten con los mejores del mercado.
+**Gemini (Google):** Su gran ventaja es la multimodalidad y el ecosistema. Los modelos Gemini 3.1 no solo leen tus correos y documentos en Drive, sino que pueden procesar horas de video o miles de archivos PDF simultáneamente gracias a su ventana de contexto líder en la industria. Es, esencialmente, un analista que vive dentro de tus herramientas de trabajo diarias.
 
-**Llama (Meta):** Modelos de código abierto que cualquiera puede usar y modificar. Son la opción para empresas o desarrolladores que quieren tener control total sobre el modelo, incluso correrlo en sus propios servidores. Probablemente no vas a usar Llama directamente, pero muchas herramientas que uses pueden estar construidas sobre estos modelos.
+**Llama (Meta):** El estandarte del código abierto. **Llama 4** ha democratizado el acceso a modelos de nivel profesional. Es la opción preferida para quienes buscan privacidad total (corriendo el modelo en servidores propios) y para desarrolladores que crean "agentes" capaces de ejecutar tareas autónomas en segundo plano.
 
 Cada familia tiene múltiples versiones y tamaños. Y cada pocas semanas aparecen actualizaciones que cambian el panorama. Lo que hoy es el modelo más capaz, mañana puede ser el segundo o el tercero. Por eso, como mencionamos en el Capítulo 1, vale más entender los conceptos que memorizar nombres de modelos.
+
+En 2026, la competencia ya no es solo por quién es más inteligente, sino por quién tiene la **ventana de contexto** (memoria) más grande y quién es capaz de **razonar** mejor antes de responder.
 
 ## La ecuación costo vs calidad
 
@@ -102,13 +105,13 @@ Esto nos lleva a una realidad práctica: los modelos más capaces cuestan más. 
 
 Piénsalo como las herramientas de tu despacho. Puedes hacer una declaración anual a mano con las tablas impresas del DOF. Funciona. Pero usas un software porque el tiempo que te ahorra justifica el costo. Con los modelos de IA es lo mismo: el costo de un modelo más capaz se justifica cuando el valor de la tarea lo amerita.
 
-La trampa en la que caen muchos es usar el modelo gratuito para todo y concluir que "la IA no sirve para cosas complejas". Es como si un despacho le diera todos los clientes, incluidos los más grandes, al practicante de tres meses, y luego se quejara de que "el personal nuevo ya no viene preparado".
+La trampa en la que caen muchos es **usar el modelo gratuito para todo y concluir que "la IA no sirve para cosas complejas"**. Es como si un despacho le diera todos los clientes, incluidos los más grandes, al practicante de tres meses, y luego se quejara de que "el personal nuevo ya no viene preparado".
 
 El mejor prompt del mundo, ejecutado en el modelo equivocado, te va a dar una respuesta mediocre. Es como tener la mejor receta de cocina y prepararla con ingredientes de mala calidad. La receta no es el problema. El ingrediente sí.
 
 Como veremos en el Capítulo 5, la forma en que le comunicas al modelo lo que necesitas es fundamental. Pero el modelo que elijas es el primer paso. Si la base es débil, ninguna instrucción, por brillante que sea, va a compensar.
 
-## En la Práctica
+## En la práctica
 
 Carlos tiene un despacho en Monterrey. Usa un modelo gratuito para todo: desde redactar correos hasta analizar las implicaciones del artículo 76 de la LISR para un cliente que realiza operaciones con partes relacionadas.
 
@@ -116,24 +119,24 @@ Para los correos, funciona perfecto. El modelo le da un borrador limpio en segun
 
 Carlos empieza a pensar que "la IA no sirve para temas fiscales complejos". Pero lo que realmente pasa es que está usando el practicante de tres meses para un caso que necesita al socio con quince años de experiencia.
 
-Cuando prueba el mismo prompt con un modelo frontier, la diferencia es notable. El análisis tiene más estructura, cita los artículos correctos, distingue entre los métodos de precios de transferencia, y hasta señala puntos que Carlos debería verificar con las disposiciones vigentes. Sigue sin ser un producto final (Carlos tiene que validar todo, porque como veremos en el Capítulo 12, la responsabilidad profesional sigue siendo suya), pero es un punto de partida sólido que le ahorra horas de redacción.
+Cuando prueba el mismo prompt con un modelo de frontera, la diferencia es notable. El análisis tiene más estructura, cita los artículos correctos, distingue entre los métodos de precios de transferencia, y hasta señala puntos que Carlos debería verificar con las disposiciones vigentes. Sigue sin ser un producto final —Carlos tiene que validar todo, porque como veremos en el Capítulo 12, la responsabilidad profesional sigue siendo suya—, pero es un punto de partida sólido que le ahorra horas de redacción.
 
 La lección de Carlos no es que necesita pagar por el modelo más caro para todo. Es que necesita elegir el modelo adecuado para cada tarea. Correos rutinarios con el modelo gratuito. Análisis fiscal complejo con el modelo más capaz que tenga disponible.
 
-## Mito vs Realidad
+## Mito vs. Realidad
 
 - **Mito:** Todos los modelos de IA son básicamente iguales; la diferencia es solo la marca.
 - **Realidad:** Los modelos varían enormemente en capacidad, tamaño, entrenamiento y áreas de fortaleza. Elegir el modelo correcto para la tarea correcta es una decisión que afecta directamente la calidad del resultado que obtienes.
 
 - **Mito:** El modelo más caro siempre es el mejor para cualquier tarea.
-- **Realidad:** Un modelo más pequeño y económico puede ser perfectamente adecuado para tareas rutinarias. La habilidad está en saber cuándo necesitas la potencia de un modelo frontier y cuándo no. Usar el modelo más caro para redactar un correo de seguimiento es como contratar a un fiscalista senior para capturar facturas.
+- **Realidad:** Un modelo más pequeño y económico puede ser perfectamente adecuado para tareas rutinarias. La habilidad está en saber cuándo necesitas la potencia de un modelo de frontera y cuándo no. Usar el modelo más caro para redactar un correo de seguimiento es como contratar a un fiscalista senior para capturar facturas.
 
 ---
 
 ### Lo que te llevas
 
 - Los modelos de IA se diferencian por sus parámetros (experiencia acumulada), su entrenamiento, y sus áreas de fortaleza. "Inteligencia artificial" no es una sola cosa: es un ecosistema diverso donde elegir importa.
-- Para tareas simples y rutinarias, un modelo gratuito o pequeño puede ser suficiente. Para análisis fiscal complejo, redacción de fundamentos legales, o interpretación de normatividad, los modelos frontier marcan una diferencia real que justifica su costo.
+- Para tareas simples y rutinarias, un modelo gratuito o pequeño puede ser suficiente. Para análisis fiscal complejo, redacción de fundamentos legales, o interpretación de normatividad, los modelos de frontera marcan una diferencia real que justifica su costo.
 - El mejor prompt con el modelo equivocado produce resultados mediocres. Antes de perfeccionar tus instrucciones (que es igualmente importante, como veremos en los Capítulos 8 a 11), asegúrate de que estás usando un modelo con la capacidad que tu tarea requiere.
 
 ### Pruébalo tú mismo
@@ -144,4 +147,4 @@ La lección de Carlos no es que necesita pagar por el modelo más caro para todo
 
 ### Si quieres ir más lejos
 
-Saber qué modelo usar es el primer paso. El segundo es saber qué decirle. Los 25 prompts del Pack para Contadores están diseñados para funcionar con modelos de alta capacidad y sacarles el máximo provecho en tareas fiscales y contables reales. Cada prompt ya incorpora el nivel de contexto y especificidad que estos modelos necesitan para darte resultados que de verdad puedas usar en tu despacho.
+Saber qué modelo usar es el primer paso. El segundo es saber qué decirle. Los [25 prompts del Pack para Contadores](https://nas.io/checkout-global?communityId=67ab5a14d444670df4027cad&communityCode=TODOCONTA_CLUB&requestor=whatsappSignup&linkClicked=https%3A%2F%2Fnas.io%2Fes-mx%2Fportal%2Fdigital-files%2Fmanage%3Fid%3D69a160e22f4e636bd0d1becd&sourceInfoType=folder&sourceInfoOrigin=69a160e22f4e636bd0d1becd) están diseñados para funcionar con modelos de alta capacidad y sacarles el máximo provecho en tareas fiscales y contables reales. Cada prompt ya incorpora el nivel de contexto y especificidad que estos modelos necesitan para darte resultados que de verdad puedas usar en tu despacho.
