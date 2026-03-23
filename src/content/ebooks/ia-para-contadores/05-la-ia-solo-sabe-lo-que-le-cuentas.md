@@ -4,6 +4,7 @@ pubDate: 2026-03-13
 description: "La ventana de contexto y el efecto 'lost in the middle'. Por qué conversaciones largas deterioran las respuestas."
 chapter: 5
 bookSlug: "ia-para-contadores"
+image: "/ebook/ia-para-contadores/cap-05.webp"
 isFree: false
 ---
 
@@ -15,91 +16,102 @@ Concepto principal: Context Window (Ventana de Contexto)
 Términos para glosario: Context Window, tokens de contexto, truncamiento, lost in the middle
 -->
 
-Mi esposa llega del trabajo con una historia que, según ella, es el chisme del siglo. Arranca a media conversacion, con nombres que jamás he escuchado, situaciones que no ubico y referencias a platicas que aparentemente ya debería conocer. Yo asiento con cara de que entiendo, pero por dentro estoy armando un rompecabezas con la mitad de las piezas faltantes.
+Mi esposa llega del trabajo, ajetreada por el calor y el tráfico, pero con unas ganas de contarme una historia que, según ella, es el chisme del año. De la emoción, arranca a media conversación, con nombres que jamás he escuchado, situaciones que no ubico y referencias a pláticas que aparentemente ya debería conocer. Yo asiento con cara de que entiendo, pero por dentro estoy armando un rompecabezas con la mitad de las piezas faltantes.
 
-Al final no me queda mas remedio que frenarla: "Espera. ¿Quien es Lupita? ¿Que paso antes? ¿Por que estamos hablando de un vestido rojo?"
+Al final no me queda más remedio que pararla para decirle: "_Espera. ¿Quién es Lupita? ¿Qué pasó antes? ¿Por qué estamos hablando de un vestido rojo?_"
 
-Cuando por fin me da el contexto completo, todo tiene sentido. El chisme es bueno, la indignacion está justificada, y hasta puedo opinar con propiedad. Pero sin esos antecedentes, mi mejor respuesta era un "ah, que barbaridad" generico que no le servia a nadie.
+Cuando por fin me da el contexto completo, todo tiene sentido. El chisme es bueno la verdad, el haberle preguntado ciertos detalles ayudaron, y hasta puedo opinar con propiedad. Pero sin esos antecedentes, mi mejor respuesta era un "ah, qué bárbaro" y, claro, pensaría que no le estaba prestando atención.
 
-Eso es exactamente lo que le pasa a un modelo de IA cuando le escribes sin contexto. No es que sea tonto. No es que no sepa de contabilidad. Es que le estas contando el chisme a medias y esperas que te de una respuesta completa.
+Eso es exactamente lo que le pasa a un modelo de IA cuando le escribes sin contexto. No es que sea tonto. No es que no sepa de contabilidad. Es que le estás contando el chisme a medias y esperas que te dé una respuesta completa.
 
-## Tu conversacion tiene limites fisicos
+## Tu conversación tiene límites físicos
 
-Cuando hablas con un modelo de IA, existe un limite real y concreto de cuanta información puede "ver" al mismo tiempo. Ese limite se llama ventana de contexto, y funciona como un escritorio con espacio finito.
+Cuando hablas con un modelo de IA, existe un límite real y concreto de cuánta información puede "ver" al mismo tiempo. Ese límite se llama ventana de contexto, y funciona como un escritorio con espacio finito.
 
-Imagina que tienes un escritorio donde solo caben 20 hojas. Puedes acomodar estados financieros, balanzas de comprobacion, papeles de trabajo. Pero el escritorio tiene un borde. Cuando llega la hoja 21, la hoja 1 se cae al suelo. Ya no la ves. Ya no existe para ti mientras trabajas.
+Imagina que tienes un escritorio donde solo caben 20 hojas. Puedes acomodar estados financieros, balanzas de comprobación, papeles de trabajo. Pero el escritorio tiene un borde. Cuando llega la hoja 21, la hoja 1 se cae al suelo. Ya no la ves. Ya no existe para ti mientras trabajas.
 
-El modelo de IA funciona igual. Todo lo que está dentro de la ventana de contexto lo puede leer, analizar y usar para responderte. Todo lo que queda fuera, simplemente no existe. No es que lo ignore por flojera. Literalmente no lo puede ver.
+El modelo de IA funciona igual. Todo lo que está dentro de la ventana de contexto lo puede leer, analizar y usar para responderte. Todo lo que queda fuera, simplemente no existe. No es que lo ignore a voluntad. Literalmente no lo puede ver.
 
-> **Concepto Clave**
-> **Context Window (Ventana de Contexto):** Es la cantidad maxima de texto que un modelo de IA puede procesar de una sola vez. Incluye tanto lo que tu le escribes como lo que el modelo te responde. Todo lo que queda fuera de está ventana, para la IA no existe.
+> **Context Window (Ventana de Contexto):** Es la cantidad máxima de texto que un modelo de IA puede procesar de una sola vez. Incluye tanto lo que tú le escribes como lo que el modelo te responde. Todo lo que queda fuera de esta ventana, para la IA no existe.
 
-Ahora, hay algo que mucha gente no entiende y que cambia completamente como deberias trabajar con estas herramientas: la ventana de contexto no solo incluye tu mensaje. Incluye toda la conversacion. Cada mensaje que tu escribes y cada respuesta que el modelo genera van llenando ese escritorio. Si llevas una conversacion larga, eventualmente el escritorio se llena.
+Ahora, hay algo que mucha gente no entiende y que cambia completamente cómo deberías trabajar con estas herramientas: la ventana de contexto no solo incluye tu mensaje. Incluye toda la conversación. Cada mensaje que tú escribes y cada respuesta que el modelo genera van llenando ese escritorio. Si llevas una conversación larga, eventualmente el escritorio se llena.
 
-¿Y que pasa cuando se llena? El modelo empieza a "olvidar" lo que dijiste al principio. No te avisa. No te dice "oye, ya no recuerdo lo que me dijiste hace veinte mensajes". Simplemente deja de tener acceso a esa información. Tu sigues hablando como si el modelo supiera todo lo anterior, y el modelo responde con lo que le queda visible. Ahí es donde empiezan las respuestas raras, las contradicciones y la frustracion de "pero si ya te lo dije".
+¿Y qué pasa cuando se llena? El modelo empieza a "olvidar" lo que dijiste al principio. No te avisa. No te dice "oye, ya no recuerdo lo que me dijiste hace veinte mensajes". Simplemente deja de tener acceso a esa información. Tú sigues hablando como si el modelo supiera todo lo anterior, y el modelo responde con lo que le queda visible. Ahí es donde empiezan las respuestas raras, las contradicciones y la frustración de "pero si ya te lo dije".
 
-## Cuanto cabe en el escritorio
+## Cuánto cabe en el escritorio
 
-Para que tengas una referencia práctica: los modelos actuales manejan ventanas de contexto de entre 100,000 y 200,000 tokens. Como vimos en el Capítulo 4, un token no es exactamente una palabra, pero como aproximacion puedes pensar que 100,000 tokens equivalen a unas 75,000 palabras en espanol. Eso es un libro completo. Parece mucho, ¿verdad?
+Para que tengas una referencia práctica: los modelos actuales manejan ventanas de contexto de entre 100,000 y 200,000 tokens. Como vimos en el Capítulo 4, un token no es exactamente una palabra, pero como aproximación puedes pensar que 100,000 tokens equivalen a unas 75,000 palabras en español. Eso es un libro completo. Parece mucho, ¿verdad?
 
-Y lo es. Puedes subir un estado financiero de 50 paginas, una escritura constitutiva completa o el texto integro de la Ley del ISR, y el modelo lo puede leer. Tecnicamente cabe en el escritorio.
+Y lo es. Puedes subir un estado financiero de 50 páginas, una escritura constitutiva completa o el texto íntegro de la Ley del ISR, y el modelo lo puede leer. Técnicamente cabe en el escritorio.
 
 Pero aquí viene el matiz importante: que quepa no significa que lo procese igual de bien.
 
-Los investigadores han descubierto un fenomeno que llaman "lost in the middle" -- perdido en el medio. Cuando le das al modelo un texto muy largo, presta mas atencion al principio y al final, y tiende a perderse detalles de la parte media. Es como cuando lees un documento larguisimo: recuerdas bien como empezaba y como terminaba, pero los parrafos del medio se te desdibujan.
+Los investigadores han descubierto un fenómeno que llaman "lost in the middle" —perdido en el medio—. Cuando le das al modelo un texto muy largo, presta más atención al principio y al final, y tiende a perderse detalles de la parte media. Es como cuando lees un documento larguísimo: recuerdas bien cómo empezaba y cómo terminaba, pero los párrafos del medio no quedan del todo claro y hasta puedes llegar a "imaginar" qué decían mas o menos.
 
-Esto tiene implicaciones directas para tu trabajo. Si subes un dictamen fiscal de 80 paginas y le preguntas algo específico que está en la página 45, el modelo podria no captar ese detalle con la misma precisión que si estuviera en la primera o la ultima página. No es un error del modelo. Es una limitacion real de como funcionan estas arquitecturas.
+Esto tiene implicaciones directas para tu trabajo. Si subes un dictamen fiscal de 80 páginas y le preguntas algo específico que está en la página 45, el modelo podría no captar ese detalle con la misma precisión que si estuviera en la primera o la última página. No es un error del modelo. Es una limitación real de cómo funcionan estas arquitecturas.
 
 ## La memoria que no existe
 
-Hay otro punto que necesitas entender, porque genera muchisima confusion: los modelos de IA no tienen memoria entre conversaciones. Cada vez que abres un chat nuevo, el modelo parte de cero. No recuerda que ayer le pediste que analizara la situación fiscal del cliente Martinez. No sabe que la semana pasada le explicaste como funciona tu despacho. Para el, cada conversacion nueva es como conocer a un desconocido en la calle.
+Hay otro punto que necesitas entender, porque genera muchísima confusión: los modelos de IA no tienen memoria entre conversaciones. Cada vez que abres un chat nuevo, el modelo parte de cero. No recuerda que ayer le pediste que analizara la situación fiscal del cliente Martínez. No sabe que la semana pasada le explicaste cómo funciona tu despacho. Para él, cada conversación nueva es como conocer a un desconocido en la calle.
 
-Algunos servicios han empezado a ofrecer funciones de "memoria" que guardan cierta información entre conversaciones, y como veremos en el Capítulo 8, los sistemas de instrucciones personalizadas te permiten precargar contexto. Pero por defecto, la regla es clara: conversacion nueva, borrón y cuenta nueva.
+Algunos servicios han empezado a ofrecer funciones de "memoria" que guardan cierta información entre conversaciones, y como veremos en el Capítulo 8, los sistemas de instrucciones personalizadas te permiten precargar contexto. Pero por defecto, la regla es clara: conversación nueva, borrón y cuenta nueva.
 
-Dentro de una misma conversacion, si hay continuidad. Si en el mensaje 1 le dices "soy contador en un despacho de Monterrey con 15 clientes personas morales del regimen general", en el mensaje 5 todavía lo sabe. Pero solo porque esa información sigue dentro de la ventana de contexto. El modelo no "recuerda" en el sentido humano de la palabra. Simplemente está releyendo toda la conversacion cada vez que genera una respuesta.
+Dentro de una misma conversación sí hay continuidad. Si en el mensaje 1 le dices "soy contador en un despacho de Monterrey con 15 clientes personas morales del régimen general", en el mensaje 5 todavía lo sabe. Pero solo porque esa información sigue dentro de la ventana de contexto. El modelo no "recuerda" en el sentido humano de la palabra. Simplemente está releyendo toda la conversación cada vez que genera una respuesta.
 
-Por eso las conversaciones largas se vuelven problematicas. No solo por el limite de la ventana, sino porque entre mas larga la conversacion, mas tokens se gastan en releer lo anterior, como vimos en el Capítulo 4, y menos espacio queda para contenido nuevo.
+Por eso las conversaciones largas se vuelven problemáticas. No solo por el límite de la ventana, sino porque entre más larga la conversación, más tokens se gastan en releer lo anterior —como vimos en el Capítulo 4— y menos espacio queda para contenido nuevo.
 
-## En la Práctica
+## Lo que pasa cuando la ventana se compacta
 
-Imaginate está situación. La contadora Laura tiene un cliente nuevo, una empresa de manufactura en Queretaro. Necesita analizar si aplica el estimulo fiscal del articulo 186 de la LISR por contratar personas con discapacidad. Abre un chat con su modelo de IA y escribe:
+Algunos modelos —Claude es uno de ellos— han implementado una solución parcial al problema de la ventana llena: cuando la conversación se alarga demasiado, el modelo compacta automáticamente lo que ya se dijo. En lugar de simplemente cortar los mensajes más antiguos, genera un resumen interno de la conversación y lo usa como sustituto.
 
-"¿Aplica el estimulo fiscal por contratar discapacitados?"
+Suena bien en teoría. Y para muchos casos lo es: si llevas una hora hablando de ideas para redactar un correo, un resumen comprimido de esa discusión conserva lo esencial.
 
-La respuesta que obtiene es generica. Le habla del articulo 186, le da los requisitos generales, menciona que necesita un certificado del IMSS. Información correcta pero que podria haber sacado de Google en tres minutos.
+Pero en materia fiscal, esto tiene un riesgo que no puedes ignorar.
+
+Cuando el modelo compacta una conversación sobre una disposición fiscal, no compacta cualquier texto: compacta lenguaje jurídico donde cada palabra importa. La diferencia entre "podrá" y "deberá" en un artículo del CFF no es estilística, es la diferencia entre una obligación y una facultad. La referencia a una fracción específica —el artículo 27, fracción III, inciso b— no es un detalle menor, es el fundamento legal de una deducción. Un resumen automático puede quedarse con la idea general y perder exactamente eso.
+
+La regla práctica: si llevas una conversación larga sobre un tema fiscal con fundamentos legales específicos, no confíes en que el modelo todavía tiene acceso fiel a lo que dijiste al principio. Cuando notes que las respuestas empiezan a ser más vagas o menos precisas, es señal de que la compactación ya ocurrió. La solución más segura es abrir un chat nuevo y repetir el contexto relevante desde cero. Sí, es un paso extra. Pero en fiscal, un matiz omitido puede costarle caro a tu cliente —y a ti.
+
+## En la práctica
+
+Imagínate esta situación. La contadora Laura tiene un cliente nuevo, una empresa de manufactura en Querétaro. Necesita analizar si aplica el estímulo fiscal del artículo 186 de la LISR por contratar personas con discapacidad. Abre un chat con su modelo de IA y escribe:
+
+"¿Aplica el estímulo fiscal por contratar discapacitados?"
+
+La respuesta que obtiene es genérica. Le habla del artículo 186, le da los requisitos generales, menciona que necesita un certificado del IMSS. Información correcta pero que podría haber sacado de Google en tres minutos.
 
 Ahora imagina que Laura escribe esto:
 
-"Soy contadora fiscal en un despacho en Queretaro. Tengo un cliente persona moral del regimen general de ley que manufactura autopartes. Acaba de contratar a 3 personas con discapacidad motriz (certificada por el IMSS). Quiero aplicar el estimulo del articulo 186 de la LISR. El cliente tiene utilidad fiscal proyectada para 2026 de $4.2 millones. Necesito saber: 1) si aplica el estimulo con estas caracteristicas, 2) como calcularlo, 3) en que linea del ISR anual se refleja, y 4) que documentacion soporte necesito tener en el expediente para una eventual revision del SAT."
+"Soy contadora fiscal en un despacho en Querétaro. Tengo un cliente persona moral del régimen general de ley que manufactura autopartes. Acaba de contratar a 3 personas con discapacidad motriz (certificada por el IMSS). Quiero aplicar el estímulo del artículo 186 de la LISR. El cliente tiene utilidad fiscal proyectada para 2026 de $4.2 millones. Necesito saber: 1) si aplica el estímulo con estas características, 2) cómo calcularlo, 3) en qué línea del ISR anual se refleja, y 4) qué documentación soporte necesito tener en el expediente para una eventual revisión del SAT."
 
-La diferencia es brutal. Ahora el modelo sabe quien pregunta, para que tipo de cliente, en que contexto fiscal, con que números reales, y exactamente que necesita saber. La respuesta pasa de ser un articulo de Wikipedia a ser un memo fiscal personalizado.
+La diferencia es brutal. Ahora el modelo sabe quién pregunta, para qué tipo de cliente, en qué contexto fiscal, con qué números reales, y exactamente qué necesita saber. La respuesta pasa de ser un artículo de Wikipedia a ser un memo fiscal personalizado.
 
-La diferencia entre una respuesta generica y una que parece que te la dio un colega que conoce tu despacho no es la inteligencia del modelo. Es el contexto que tu le das.
+La diferencia entre una respuesta genérica y una que parece que te la dio un colega que conoce tu despacho no es la inteligencia del modelo. Es el contexto que tú le das.
 
-Y cuando subes documentos largos, recuerda el efecto "lost in the middle". Si necesitas que el modelo analice un punto específico de un CFDI de nomina o de una declaracion anual, mejor señala exactamente donde está lo que te interesa, en lugar de subir todo el documento y esperar que lo encuentre solo.
+Y cuando subes documentos largos, recuerda el efecto "lost in the middle". Si necesitas que el modelo analice un punto específico de un CFDI de nómina o de una declaración anual, mejor señala exactamente dónde está lo que te interesa, en lugar de subir todo el documento y esperar que lo encuentre solo.
 
-## Mito vs Realidad
+## Mito vs. Realidad
 
 - **Mito:** "La IA ya sabe de contabilidad mexicana, no necesito explicarle mi situación."
-- **Realidad:** El modelo fue entrenado con información general. Sabe que existe el SAT, el ISR y los CFDI. Pero no sabe nada de tu cliente, tu despacho, tu criterio profesional ni tu situación específica. Sin ese contexto, te da respuestas de manual. Con el, te da respuestas de colega.
+- **Realidad:** El modelo fue entrenado con información general. Sabe que existe el SAT, el ISR y los CFDI. Pero no sabe nada de tu cliente, tu despacho, tu criterio profesional ni tu situación específica. Sin ese contexto, te da respuestas de manual. Con él, te da respuestas de colega.
 
-- **Mito:** "Si la conversacion es larga, la IA recuerda todo lo que le dije."
-- **Realidad:** Cuando la conversacion excede la ventana de contexto, el modelo pierde acceso a los mensajes mas antiguos. No te avisa. Simplemente deja de tener esa información disponible. Si estas en una conversacion larga y sientes que el modelo "olvido" algo, probablemente es exactamente eso lo que paso.
+- **Mito:** "Si la conversación es larga, la IA recuerda todo lo que le dije."
+- **Realidad:** Cuando la conversación excede la ventana de contexto, el modelo pierde acceso a los mensajes más antiguos. No te avisa. Simplemente deja de tener esa información disponible. Si estás en una conversación larga y sientes que el modelo "olvidó" algo, probablemente es exactamente eso lo que pasó.
 
 ---
 
 ### Lo que te llevas
 
-- La ventana de contexto es el limite fisico de cuanta información puede ver la IA al mismo tiempo. Lo que queda fuera de esa ventana, no existe para el modelo.
-- Dar contexto completo (quien eres, que necesitas, situación específica, que ya intentaste) transforma respuestas genericas en respuestas personalizadas. La diferencia entre Google y un colega experto es el contexto.
-- Cada conversacion nueva empieza de cero. El modelo no recuerda chats anteriores. Y en conversaciones muy largas, empieza a perder los mensajes del principio.
+- La ventana de contexto es el límite físico de cuánta información puede ver la IA al mismo tiempo. Lo que queda fuera de esa ventana no existe para el modelo.
+- Dar contexto completo —quién eres, qué necesitas, situación específica, qué ya intentaste— transforma respuestas genéricas en respuestas personalizadas. La diferencia entre Google y un colega experto es el contexto.
+- Cada conversación nueva empieza de cero. El modelo no recuerda chats anteriores. Y en conversaciones muy largas, empieza a perder los mensajes del principio.
 
-### Pruebalo tu mismo
+### Pruébalo tú mismo
 
-1. Abre cualquier modelo de IA y hazle una pregunta fiscal sin contexto. Por ejemplo: "¿Como cálculo el ISR de una persona fisica?" Observa la respuesta.
-2. Ahora, en un chat nuevo, hazle la misma pregunta pero con contexto completo: "Soy contador en [tu ciudad]. Tengo un cliente persona fisica con actividad empresarial que tributa en el regimen de confianza. Sus ingresos anuales son de $2.8 millones. Tiene deducciones personales por $180,000 (gastos medicos y colegiaturas). Necesito calcular su ISR anual 2025 y verificar si le conviene permanecer en RESICO o cambiar al regimen general. Muestra el cálculo paso a paso."
-3. Compara las dos respuestas. La primera sera un articulo generico. La segunda parecera un memo de trabajo de tu despacho.
+1. Abre cualquier modelo de IA y hazle una pregunta fiscal sin contexto. Por ejemplo: "¿Cómo calculo el ISR de una persona física?" Observa la respuesta.
+2. Ahora, en un chat nuevo, hazle la misma pregunta pero con contexto completo: "Soy contador en [tu ciudad]. Tengo un cliente persona física con actividad empresarial que tributa en el régimen de confianza. Sus ingresos anuales son de $2.8 millones. Tiene deducciones personales por $180,000 (gastos médicos y colegiaturas). Necesito calcular su ISR anual 2025 y verificar si le conviene permanecer en RESICO o cambiar al régimen general. Muestra el cálculo paso a paso."
+3. Compara las dos respuestas. La primera será un artículo genérico. La segunda parecerá un memo de trabajo de tu despacho.
 
-### Si quieres ir mas lejos
+### Si quieres ir más lejos
 
-Cada prompt del Pack de Prompts para Contadores ya incluye la estructura de contexto que necesitas: quien eres, que necesitas, para que tipo de cliente, y en que situación fiscal. En lugar de construir ese contexto desde cero cada vez, lo tienes listo para las tareas mas comunes del despacho.
+Cada prompt del [Pack de Prompts para Contadores](https://nas.io/checkout-global?communityId=67ab5a14d444670df4027cad&communityCode=TODOCONTA_CLUB&requestor=whatsappSignup&linkClicked=https%3A%2F%2Fnas.io%2Fes-mx%2Fportal%2Fdigital-files%2Fmanage%3Fid%3D69a160e22f4e636bd0d1becd&sourceInfoType=folder&sourceInfoOrigin=69a160e22f4e636bd0d1becd) ya incluye la estructura de contexto que necesitas: quién eres, qué necesitas, para qué tipo de cliente, y en qué situación fiscal. En lugar de construir ese contexto desde cero cada vez, lo tienes listo para las tareas más comunes del despacho.
