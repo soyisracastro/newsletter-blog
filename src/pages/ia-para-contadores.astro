@@ -6,9 +6,10 @@ import {
   PUBLIC_SENDY_EBOOK_LIST_ID,
 } from "astro:env/client";
 
-const NAS_IO_URL = "https://nas.io/columna13/products/ia-para-contadores";
+const NAS_IO_URL =
+  "https://nas.io/checkout-global?communityId=67ab5a14d444670df4027cad&communityCode=TODOCONTA_CLUB&requestor=whatsappSignup&linkClicked=https%3A%2F%2Fnas.io%2Fes-mx%2Fportal%2Fdigital-files%2Fmanage%3Fid%3D69cd0ae3e2df2b4a3aa7eb2a&sourceInfoType=folder&sourceInfoOrigin=69cd0ae3e2df2b4a3aa7eb2a";
 const NAS_IO_URL_BUNDLE =
-  "https://nas.io/columna13/products/ia-para-contadores-bundle";
+  "https://nas.io/checkout-global?communityId=67ab5a14d444670df4027cad&communityCode=TODOCONTA_CLUB&requestor=whatsappSignup&linkClicked=https%3A%2F%2Fnas.io%2Fes-mx%2Fportal%2Fdigital-files%2Fmanage%3Fid%3D69cd0f8e84606b692086aba1&sourceInfoType=folder&sourceInfoOrigin=69cd0f8e84606b692086aba1";
 const PRICE = "$297 MXN";
 const PRICE_BUNDLE = "$597 MXN";
 
@@ -251,21 +252,23 @@ const formId = "ebook-lead-form";
       </div>
       <div class="flex flex-col gap-3 text-lg leading-relaxed text-neutral-800">
         <div class="flex flex-col sm:flex-row gap-3">
-          <span
-            class="flex items-center justify-center px-8 h-14 text-lg rounded-sm bg-neutral-300 text-neutral-500 font-semibold cursor-not-allowed text-center"
+          <a
+            href={NAS_IO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center px-8 h-14 text-lg rounded-sm bg-neutral-900 text-white font-semibold text-center hover:bg-neutral-800 transition-colors"
           >
             Ebook — {PRICE}
-          </span>
-          <span
-            class="flex items-center justify-center px-8 h-14 text-lg border border-neutral-200 rounded-sm text-neutral-400 cursor-not-allowed text-center"
+          </a>
+          <a
+            href={NAS_IO_URL_BUNDLE}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center px-8 h-14 text-lg border border-neutral-900 rounded-sm text-neutral-900 font-semibold text-center hover:bg-neutral-50 transition-colors"
           >
             Bundle + Prompts — {PRICE_BUNDLE}
-          </span>
+          </a>
         </div>
-        <p class="text-sm text-neutral-500 italic">
-          Disponible a partir del miércoles 1 de abril. Suscríbete arriba para
-          recibir los primeros 2 capítulos hoy.
-        </p>
         <p class="text-lg leading-relaxed text-neutral-800">
           Incluye PDF y acceso a la versión web con los 17 capítulos y 3
           apéndices.
