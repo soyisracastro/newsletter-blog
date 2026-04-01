@@ -1,26 +1,29 @@
 ---
-import type { InferGetStaticPropsType } from 'astro';
-import { getCollection, render } from 'astro:content';
-import EbookLayout from '../../../layouts/EbookLayout.astro';
+import type { InferGetStaticPropsType } from "astro";
+import { getCollection, render } from "astro:content";
+import EbookLayout from "../../../layouts/EbookLayout.astro";
 
-const BOOK_SLUG = 'ia-para-contadores';
-const BOOK_TITLE = 'IA para Contadores';
+const BOOK_SLUG = "ia-para-contadores";
+const BOOK_TITLE = "IA para Contadores";
 
 export async function getStaticPaths() {
-  const SLUG = 'ia-para-contadores';
-  const all = await getCollection('ebooks');
+  const SLUG = "ia-para-contadores";
+  const all = await getCollection("ebooks");
   const chapters = all
     .filter((e) => e.id.startsWith(`${SLUG}/`))
     .sort((a, b) => a.data.chapter - b.data.chapter);
 
   return chapters.map((entry, i) => {
-    const slug = entry.id.split('/')[1];
+    const slug = entry.id.split("/")[1];
     return {
       params: { chapter: slug },
       props: {
         entry,
-        prevSlug: i > 0 ? chapters[i - 1].id.split('/')[1] : undefined,
-        nextSlug: i < chapters.length - 1 ? chapters[i + 1].id.split('/')[1] : undefined,
+        prevSlug: i > 0 ? chapters[i - 1].id.split("/")[1] : undefined,
+        nextSlug:
+          i < chapters.length - 1
+            ? chapters[i + 1].id.split("/")[1]
+            : undefined,
       },
     };
   });
@@ -29,7 +32,7 @@ export async function getStaticPaths() {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { entry, prevSlug, nextSlug } = Astro.props;
 const { Content } = await render(entry);
-const chapterSlug = entry.id.split('/')[1];
+const chapterSlug = entry.id.split("/")[1];
 ---
 
 <EbookLayout
@@ -41,22 +44,15 @@ const chapterSlug = entry.id.split('/')[1];
   prevSlug={prevSlug}
   nextSlug={nextSlug}
 >
-  {entry.data.image ? (
-    <img
-      src={entry.data.image}
-      alt={entry.data.title}
-      class="w-full rounded mb-10"
-    />
-  ) : (
-    <div
-      class="w-full aspect-video bg-neutral-100 rounded mb-10 flex items-center justify-center"
-      data-illustration-slot={chapterSlug}
-    >
-      <span class="text-neutral-300 text-sm font-mono">
-        ilustración — cap. {entry.data.chapter}
-      </span>
-    </div>
-  )}
+  {
+    entry.data.image && (
+      <img
+        src={entry.data.image}
+        alt={entry.data.title}
+        class="w-full rounded mb-10"
+      />
+    )
+  }
 
   <div class="prose prose-lg prose-neutral max-w-none">
     <Content />
