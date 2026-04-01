@@ -20,7 +20,10 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^17.0.5",
     "prettier": "^3.8.1",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "puppeteer": "^24.40.0"
   }
 }
